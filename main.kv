@@ -1,0 +1,114 @@
+<MainStyles>:
+    # Выравнивание и перенос текста
+    text_size: self.width, None
+    halign: 'center'
+
+<Widget>:
+    font_name: 'fonts/AlfaSlabOne-Regular.ttf'   
+    canvas.before:
+        Color: 
+            rgba: 1, 0.7, 0, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos 
+
+<ButtonBig@Button>:
+    background_color: 0.3, 0.7, 0.09 # 0.6, 0, 0.67# 0, 0.52, 0.18 # 0.22, 0.17, 0.94, 1
+    background_normal: ''
+    font_size: '50sp'
+    # size_hint: 0.9, 0.8
+    # pos_hint: {'center_x': 0.5,'center_y': 0.5}
+    outline_width: '2sp'
+    outline_color: 0.23, 0.67, 0.09
+
+<ButtonMedium@Button>:
+    background_color: 0.3, 0.7, 0.09
+    background_normal: ''
+    font_size: '30sp'
+    outline_width: '1sp'
+    outline_color: 0.23, 0.67, 0.09
+
+<MainScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: '30dp', '20dp'
+        spacing: '20dp'
+        canvas:
+            Color: 
+                rgba: 1, 0.7, 0, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Label:
+            text: "Master of all!"
+            size_hint_y: 0.8
+            color: 1, 1, 1 # color: 0.36, 0.7, 0.09, 1
+            outline_width: '2sp'
+            outline_color: 1, 0.6, 0
+            font_size: '50sp'
+            bold: True
+        Image:
+            source: "images/college-gacfa_01.png"
+        Label:
+            text: 'Version: 0.1.0'
+            outline_width: '1sp'
+            outline_color: 1, 0.6, 0
+            size_hint: 1, 0.2
+            color: 1, 1, 1
+            bold: True
+        ButtonBig:
+            text: "Play"
+            on_press:
+                root.manager.current = 'menu'
+        FloatLayout:
+            size: 0, 0
+            size_hint: 0, 0
+            Button:
+                id: fly
+                text: "FLY"
+
+<MenuGame>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: '40dp', '80dp'
+        spacing: '80dp'
+        Label:
+            text: 'Level 1'
+            size_hint_y: 0.3
+            color: 1, 1, 1 
+            outline_width: '1sp'
+            outline_color: 1, 0.6, 0
+            font_size: '40sp'
+            bold: True
+        Label:
+            text: '0 points'
+            size_hint_y: 0.3
+            color: 0.75, 0, 0.5 
+            outline_width: '1sp'
+            outline_color: 1, 0.6, 0
+            font_size: '30sp'
+            bold: True
+        ButtonMedium:
+            text: 'Learn'
+            on_press:
+                root.manager.current = 'info'
+                root.manager.transition.direction = "left"
+        ButtonMedium:
+            text: 'Exam'
+            disabled: 'True'
+        Widget:
+            size_hint_y: 0.3
+
+<InfoScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        GridLayout:
+            cols: 3
+            id: learn_grid
+            padding: '10dp'
+        ButtonBig:
+            text: 'Got It!'
+            size_hint_y: 0.2
+            on_press:
+                root.manager.current = 'menu'
+                root.manager.transition.direction = "right"
